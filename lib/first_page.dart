@@ -9,7 +9,7 @@ class FirstPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('練習'),
+        title: Text('練習1'),
       ),
       body: Center(
         child: ElevatedButton(
@@ -17,7 +17,7 @@ class FirstPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => SecondPage(),
+                builder: (context) => SecondPage("ゴイスー"),
               ),
             );
           },
