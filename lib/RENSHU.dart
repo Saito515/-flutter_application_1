@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'first_page.dart';
+import 'RENSHU02.dart';
+
+
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,34 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: FirstPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
- const MyHomePage({Key? key}) : super(key: key);
- 
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('練習'),
-      ),
-      body: Center(
-        child:ElevatedButton(
-          onPressed: (){
-            //ボタンを押したときに呼ばれるコードを書く
-
-          }, child: Text('次の画面へ'),
-        ),
-      ),
-    );
-  }
-}
