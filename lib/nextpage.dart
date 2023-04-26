@@ -1,58 +1,83 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/sql.dart';
 
-
-class NextPage extends StatelessWidget {
+class NextPage extends StatefulWidget {
   NextPage(this.rirekilist);
+
   List<String> rirekilist;
 
+  @override
+  _NextPageState createState() => _NextPageState();
+}
+
+class _NextPageState extends State<NextPage> {
+  List<String> rirekilist = [];
+
+  @override
+  void initState() {
+    super.initState();
+  rirekilist = List<String>.from(widget.rirekilist);
+  }
+
+  void _clearrireki() {
+    setState(() {
+      rirekilist = [];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          actions: <Widget>[
-            IconButton(
-              onPressed: () {
-                  rirekilist = [];
-              },
-              icon: Icon(Icons.delete),
-            ),
-          ],
-          title: Text('履歴'),
-        ),
-        body: Container(
-            child: Center(
+      appBar: AppBar(
+        title: Text('履歴ページ'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
               child: rirekilist.length > 0
-                  ? Scrollbar(
-                  child: ListView.separated(
+                  ? ListView.separated(
                       itemCount: rirekilist.length,
                       separatorBuilder: ((context, index) =>
                           Divider(height: 0, thickness: 0)),
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
                           color: index.isEven
-                              ? Colors.orange.shade200
-                              : Colors.blueGrey.shade200,
+                              ? Colors.yellow.shade200
+                              : Colors.white,
                           child: ListTile(
                             title: Text(
                               '履歴${index + 1}',
                               style: TextStyle(
-                                  fontSize: 30, color: Colors.black45),
+                                  fontSize: 20, color: Colors.brown),
                             ),
                             subtitle: Text(
-                              rirekilist[index],
+                              '${rirekilist[index]}',
                               style:
-                              TextStyle(fontSize: 50, color: Colors.black),
+                                  TextStyle(fontSize: 40, color: Colors.black),
                             ),
                           ),
                         );
-                      }))
+                      },
+                    )
                   : Text(
-                "計算履歴無し",
-                style: TextStyle(fontSize: 60),
+                      "履歴はありません",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 30),
+                    ),
+            ),
+            ElevatedButton(
+              onPressed: _clearrireki,
+              child: Text(
+                '履歴削除',
+                style: TextStyle(fontSize: 30),
               ),
-            )));
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

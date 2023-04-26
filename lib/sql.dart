@@ -1,41 +1,47 @@
-import 'package:flutter_application_1/main.dart';
-import 'package:flutter_application_1/nextpage.dart';
-
-import 'package:mysql1/mysql1.dart';
 import 'package:mysql_client/mysql_client.dart';
 import 'package:mysql1/mysql1.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_dotenv/src/dotenv.dart';
-import 'dart:async';
 
-
-List<String> rirekilist = [ ];
-
+import 'package:flutter_application_1/main.dart';
 
 class MySQL {
+Future<void> insert(String rireki) async {
+  print("Connecting to mysql server...");
 
-  Future select() async {
-    final conn = await MySQLConnection.createConnection(
-      host: dotenv.get('HOST'),
-      port: int.parse(dotenv.get('PORT')),
-      userName: dotenv.get('USER'),
-      password: dotenv.get('PASSWORD'),
-      databaseName: dotenv.get('DB'), // optional
-    );
-    var results = await conn.execute('SELECT CALC FROM RIREKI');
+  // create connection
+  final conn = await MySQLConnection.createConnection(
+    host: "192.168.1.200",
+    port: 3306,
+    userName: "msaito",
+    password: "BKbX4Pa2RXqYLq66",
+    databaseName: "msaito", // optional
+  );
 
-    /* rirekilist.clear();
-    for (var row in results) {
-     if (row[1] >= 1){
-        rirekilist.add('${row[0]}             10^${row[1]}');
-      }else{
-        rirekilist.add('${row[0]}');
-      }
-      rirekilist.toString();// resultListをmain.dartで変数に入れるためstring型に変更
-    }
-    await conn.close();//処理を終了させる
+  await conn.connect();
+
+  print("Connected");
+
+  // update some rows
+  var res = await conn.execute(
+    "INSERT INTO `CALC` (`RIREKI`) VALUES ('$rireki');",
+
+
+  );
+
+  //print(res.affectedRows);//←データ更新クエリによって変更された行の数
+
+  // make query
+  var result = await conn.execute("SELECT * FROM CALC");
+
+  for (final row in result.rows) {
+
   }
-*/
-  }
-}
+
+
+  result.rowsStream.listen((row) {
+    print(row.assoc());
+  });
+
+  // close all connections
+  await conn.close();
+}}
