@@ -14,7 +14,7 @@ import 'package:buffer/io_buffer.dart';
 import 'dart:io';
 
 Future main() async {
-  // await dotenv.load(fileName: '.env'); //envファイル読み込み！！
+  await dotenv.load(fileName: '.env'); //envファイル読み込み！！
   runApp(MyApp());
 }
 
@@ -350,7 +350,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               "÷",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 60,
+                                fontSize: 80,
                               ),
                             ),
                           )),
@@ -369,7 +369,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               "7",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 60,
+                                fontSize: 80,
                               ),
                             ),
                           )),
@@ -382,7 +382,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               "8",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 60,
+                                fontSize: 80,
                               ),
                             ),
                           )),
@@ -395,7 +395,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 "9",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 60,
+                                  fontSize: 80,
                                 ),
                               ),
                             ),
@@ -412,7 +412,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               "×",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 60,
+                                fontSize: 80,
                               ),
                             ),
                           )),
@@ -431,7 +431,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               "4",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 60,
+                                fontSize: 80,
                               ),
                             ),
                           )),
@@ -444,7 +444,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 "5",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 60,
+                                  fontSize: 80,
                                 ),
                               ),
                             ),
@@ -458,7 +458,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 "6",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 60,
+                                  fontSize: 80,
                                 ),
                               ),
                             ),
@@ -475,7 +475,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               "-",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 60,
+                                fontSize: 80,
                               ),
                             ),
                           )),
@@ -494,7 +494,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   "1",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontSize: 60,
+                                    fontSize: 80,
                                   ),
                                 )),
                           ),
@@ -507,7 +507,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 "2",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 60,
+                                  fontSize: 80,
                                 ),
                               ),
                             ),
@@ -521,7 +521,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               "3",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 60,
+                                fontSize: 80,
                               ),
                             ),
                           )),
@@ -537,7 +537,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 "+",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 60,
+                                  fontSize: 80,
                                 ),
                               ),
                             ),
@@ -577,7 +577,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 "0",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 60,
+                                  fontSize: 80,
                                 ),
                               ),
                             ),
@@ -591,7 +591,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ".",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 60,
+                                  fontSize: 80,
                                 ),
                               ),
                             ),
@@ -620,7 +620,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 "＝",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 60,
+                                  fontSize: 80,
                                 ),
                               ),
                             ),

@@ -22,7 +22,7 @@ class _NextPageState extends State<NextPage> {
 
   void _clearrireki() {
     setState(() {
-      rirekilist = [];
+      rirekilist.clear();
     });
   }
 
