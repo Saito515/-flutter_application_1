@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/sql.dart';
+import 'dart:ui';
 
 class NextPage extends StatefulWidget {
   NextPage(this.rirekilist);
@@ -12,25 +13,35 @@ class NextPage extends StatefulWidget {
 }
 
 class _NextPageState extends State<NextPage> {
-  List<String> rirekilist = [];
+  MySQL SQL = MySQL();
 
   @override
   void initState() {
-    super.initState();
-  rirekilist = List<String>.from(widget.rirekilist);
-  }
-
-  void _clearrireki() {
-    setState(() {
-      rirekilist.clear();
-    });
+    rirekilist = List<String>.from(widget.rirekilist);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('履歴ページ'),
+        iconTheme: IconThemeData(
+          size: 38,
+        ),
+        actions: <Widget>[
+          IconButton(
+            iconSize: 45,
+            onPressed: () {
+              setState(() {
+                SQL.select();
+              });
+            },
+            icon: Icon(Icons.install_mobile),
+          ),
+        ],
+        title: Text('履歴',
+            style: TextStyle(
+              fontSize:30,
+            )),
       ),
       body: Center(
         child: Column(
@@ -50,8 +61,8 @@ class _NextPageState extends State<NextPage> {
                           child: ListTile(
                             title: Text(
                               '履歴${index + 1}',
-                              style: TextStyle(
-                                  fontSize: 20, color: Colors.brown),
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.brown),
                             ),
                             subtitle: Text(
                               '${rirekilist[index]}',
@@ -69,7 +80,12 @@ class _NextPageState extends State<NextPage> {
                     ),
             ),
             ElevatedButton(
-              onPressed: _clearrireki,
+              onPressed: () {
+                SQL.delete();
+                setState(() {
+                  rirekilist = [];
+                });
+              },
               child: Text(
                 '履歴削除',
                 style: TextStyle(fontSize: 30),

@@ -12,6 +12,9 @@ import 'dart:math' as Math;
 import 'package:provider/provider.dart';
 import 'package:buffer/io_buffer.dart';
 import 'dart:io';
+import 'dart:ui';
+
+
 
 Future main() async {
   await dotenv.load(fileName: '.env'); //envファイル読み込み！！
@@ -67,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _displayPow = 0;
     if (_showNumber == _setNumber) {
       //①表示の数と保持の数が一緒
-      if (10000000 > _showNumber) {
+      if (1000000 > _showNumber) {
         //②表示が千万未満
         setState(() {
           if (!_decimalFlag) {
@@ -125,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _decimalFlag = false;
   } //演算子ボタン押した時
 
-  void _calcAdd() async{
+  void _calcAdd() async {
     setState(() {
       _showNumber = _firstNum + _setNumber;
       _checkDecimal();
@@ -135,10 +138,9 @@ class _MyHomePageState extends State<MyHomePage> {
       rirekilist.add(_rireki);
     });
     await SQL.insert(_rireki); //データベースにデータ格納
-
   } //足し算
 
-  void _calcSub() async{
+  void _calcSub() async {
     setState(() {
       _showNumber = _firstNum - _setNumber;
       _checkDecimal();
@@ -151,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
     await SQL.insert(_rireki);
   } //引き算
 
-  void _calcMulti() async{
+  void _calcMulti() async {
     setState(() {
       _showNumber = _firstNum * _setNumber;
       _checkDecimal();
@@ -164,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
     await SQL.insert(_rireki);
   } //かけ算
 
-  void _calcDiv()async {
+  void _calcDiv() async {
     setState(() {
       if (_setNumber == 0) {
         _zeroFlag = true;
@@ -199,12 +201,20 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   } //+と-を反転
 
+  void _medical(){
+    setState(() {
+      _showNumber=_showNumber*0.1;
+
+    });
+
+  }
+
   void _checkDecimal() {
     double checkNum = _showNumber;
-    if (10000000 < _showNumber || _showNumber == _showNumber.toInt() //整数である
+    if (100000 < _showNumber || _showNumber == _showNumber.toInt() //整数である
         ) {
       int count;
-      for (int i = 0; 10000000 < checkNum / Math.pow(10, i); i++) {
+      for (int i = 0; 100000 < checkNum / Math.pow(10, i); i++) {
         count = i;
         checkNum = checkNum / 10;
       }
@@ -225,7 +235,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("電卓"),
+          title: Text(
+            "電卓",
+            style: TextStyle(
+              fontSize: 30,
+            ),
+          ),
         ),
         body: Container(
           child: Column(children: <Widget>[
@@ -235,7 +250,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                     alignment: Alignment.topLeft,
                     width: 180,
-                    height: 30,
+                    height: 50,
                     child: Text(
                       "" + "$_rireki",
                       style: TextStyle(
@@ -245,7 +260,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                     alignment: Alignment.topRight,
                     //alignment: Alignment.centerRight,
-                    height: 30,
+                    height: 40,
                     child: (_zeroFlag == true) //その時エラーが出る
                         ? Text(
                             "0で割ることはできません",
@@ -306,10 +321,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: IconButton(
                             icon: Icon(Icons.medical_information),
                             onPressed: () {
-
+                              _medical();
                             },
-                                iconSize: 60,
-                                color: Colors.blueGrey,
+                            iconSize: 60,
+                            color: Colors.blueGrey,
                           )),
                           Expanded(
                             child: TextButton(
@@ -551,7 +566,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
