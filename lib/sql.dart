@@ -13,7 +13,7 @@ List<String> rirekilist = [];
 class MySQL {
   //データベースに保存する処理
   Future<void> insert(String rireki) async {
-    print("Connecting to mysql server...");
+   // print("Connecting to mysql server...");
     await dotenv.load(fileName: '.env');
     // create connection
     final conn = await MySQLConnection.createConnection(
@@ -26,7 +26,7 @@ class MySQL {
 
     await conn.connect();
 
-    print("Connected");
+    //print("Connected");
 
     //rirekiをデータベースに追加
     var res = await conn.execute(
@@ -36,7 +36,7 @@ class MySQL {
     var result = await conn.execute("SELECT * FROM `CALC`;");
 
     result.rowsStream.listen((row) {
-      print(row.assoc());
+     // print(row.assoc());
     });
     await conn.close();
   }

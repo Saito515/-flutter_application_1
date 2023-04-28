@@ -1,5 +1,6 @@
 import 'package:flutter_application_1/nextpage.dart';
 import 'package:flutter_application_1/sql.dart';
+import 'package:flutter_application_1/medical.dart';
 
 import 'package:mysql_client/mysql_client.dart';
 import 'package:mysql1/mysql1.dart';
@@ -13,8 +14,6 @@ import 'package:provider/provider.dart';
 import 'package:buffer/io_buffer.dart';
 import 'dart:io';
 import 'dart:ui';
-
-
 
 Future main() async {
   await dotenv.load(fileName: '.env'); //envファイル読み込み！！
@@ -64,6 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
   String _shiki = " ";
   String _ans = " ";
   List<String> rirekilist = []; //履歴表示用の配列
+
+  //医療費計算用
+  int medical = 0;
 
 //数字をセットする
   void _setNum(double num) {
@@ -132,6 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _showNumber = _firstNum + _setNumber;
       _checkDecimal();
+      medical = _showNumber.toInt();
       _ans = _showNumber.toString();
       _rireki = _firstNum.toString() + "+" + _setNumber.toString() + "=" + _ans;
       _firstNum = _showNumber;
@@ -201,12 +204,10 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   } //+と-を反転
 
-  void _medical(){
+  void medicalcalc() {
     setState(() {
-      _showNumber=_showNumber*0.1;
-
+      _showNumber = _showNumber * 0.1;
     });
-
   }
 
   void _checkDecimal() {
@@ -321,7 +322,11 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: IconButton(
                             icon: Icon(Icons.medical_information),
                             onPressed: () {
-                              _medical();
+                              Navigator.pop(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MedicalPage(medical),
+                                  ));
                             },
                             iconSize: 60,
                             color: Colors.blueGrey,
@@ -329,7 +334,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                _clearNum();
+                                print(rirekilist);
                               },
                               child: Text(
                                 "CE",
@@ -567,11 +572,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: TextButton(
                               onPressed: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
+                                  context,
+                                  MaterialPageRoute(
                                       builder: (context) =>
-                                          NextPage(rirekilist),
-                                    ));
+                                          NextPage(rirekilist)),
+                                );
                               },
                               child: Text(
                                 "履歴表示",
