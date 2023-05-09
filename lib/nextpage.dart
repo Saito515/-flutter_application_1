@@ -17,6 +17,7 @@ class _NextPageState extends State<NextPage> {
 
   @override
   void initState() {
+    super.initState();
     rirekilist = List<String>.from(widget.rirekilist);
   }
 
@@ -29,18 +30,30 @@ class _NextPageState extends State<NextPage> {
         ),
         actions: <Widget>[
           IconButton(
+            //データ取得
             iconSize: 45,
             onPressed: () {
               setState(() {
                 SQL.select();
+                print(rirekilist);
               });
             },
             icon: Icon(Icons.install_mobile),
           ),
+          IconButton(
+            //データ削除
+            iconSize: 45,
+            onPressed: () {
+              setState(() {
+                SQL.delete();
+              });
+            },
+            icon: Icon(Icons.delete),
+          ),
         ],
         title: Text('履歴',
             style: TextStyle(
-              fontSize:30,
+              fontSize: 30,
             )),
       ),
       body: Center(
@@ -81,13 +94,12 @@ class _NextPageState extends State<NextPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                SQL.delete();
                 setState(() {
                   rirekilist = [];
                 });
               },
               child: Text(
-                '履歴削除',
+                '削除',
                 style: TextStyle(fontSize: 30),
               ),
             ),

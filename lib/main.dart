@@ -319,18 +319,21 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Row(
                         children: <Widget>[
                           Expanded(
-                              child: IconButton(
-                            icon: Icon(Icons.medical_information),
-                            onPressed: () {
-                              Navigator.pop(
+                            child: IconButton(
+                              icon: const Icon(
+                                Icons.medical_information_sharp,
+                                size: 50,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => MedicalPage(medical),
-                                  ));
-                            },
-                            iconSize: 60,
-                            color: Colors.blueGrey,
-                          )),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
                           Expanded(
                             child: TextButton(
                               onPressed: () {
