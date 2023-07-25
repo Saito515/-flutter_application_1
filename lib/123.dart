@@ -31,7 +31,7 @@ Future<void> main(List<String> arguments) async {
 
   // print query result
   for (final row in result.rows) {
-    print("${row.colAt(0)}" + "これだ"); //1列目
+    print("${row.colAt(0)}" + "これだ///"); //1列目
     //print("${row.colAt(1)}"+"これだぜ");//2列目
 
     //print all rows as Map<String, String>
