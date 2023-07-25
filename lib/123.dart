@@ -6,13 +6,7 @@ Future<void> main(List<String> arguments) async {
   print("Connecting to mysql server...");
 
   // create connection
-  final conn = await MySQLConnection.createConnection(
-    host: "192.168.1.200",
-    port: 3306,
-    userName: "msaito",
-    password: "BKbX4Pa2RXqYLq66",
-    databaseName: "msaito", // optional
-  );
+  final conn = await MySQLConnection.createConnection();
 
   await conn.connect();
 
@@ -20,12 +14,9 @@ Future<void> main(List<String> arguments) async {
 
   // update some rows
   var res = await conn.execute(
-    // "INSERT INTO `TEST` (`NAME`, `NUMBER`) VALUES ('あああ', '1234');",
-   //"DELETE FROM `CALC` ",
-    "INSERT INTO `CALC` (`RIREKI`) VALUES ('2つめ');"
-
-
-  );
+      // "INSERT INTO `TEST` (`NAME`, `NUMBER`) VALUES ('あああ', '1234');",
+      //"DELETE FROM `CALC` ",
+      "INSERT INTO `CALC` (`RIREKI`) VALUES ('2つめ');");
 
   //print(res.affectedRows);//←データ更新クエリによって変更された行の数
 
@@ -40,7 +31,7 @@ Future<void> main(List<String> arguments) async {
 
   // print query result
   for (final row in result.rows) {
-   print("${row.colAt(0)}"+"これだ");//1列目
+    print("${row.colAt(0)}" + "これだ"); //1列目
     //print("${row.colAt(1)}"+"これだぜ");//2列目
 
     //print all rows as Map<String, String>
