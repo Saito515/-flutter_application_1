@@ -4,14 +4,13 @@ import 'package:flutter_application_1/sql.dart';
 import 'package:flutter_application_1/nextpage.dart';
 import 'dart:ui';
 
-
-
 class MedicalPage extends StatelessWidget {
   int medical;
+
   MedicalPage(this.medical);
+
   double _showmedical = 0;
   int p = 0;
-
 
   void over75() {
     _showmedical = (medical * 0.1);
@@ -28,10 +27,6 @@ class MedicalPage extends StatelessWidget {
     p = 3;
   }
 
-  @override
-  void initState() {
-    int _medicals;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +37,10 @@ class MedicalPage extends StatelessWidget {
         ),
         home: Scaffold(
           appBar: AppBar(
-
-            title: Text("医療費概算",style: TextStyle(
-    fontSize: 30),),
+            title: Text(
+              "医療費概算",
+              style: TextStyle(fontSize: 30),
+            ),
           ),
           body: Center(
             child: Column(
@@ -52,29 +48,28 @@ class MedicalPage extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: Container(
-                    child: Text("医療費総額が￥" + '$medical' + "の場合",
-                      style: TextStyle(fontSize: 30),),
-
+                    child: Text(
+                      "医療費総額が￥" + '$medical' + "の場合",
+                      style: TextStyle(fontSize: 30),
+                    ),
                   ),
                 ),
-                Text(
-                    '年齢を選んでください',style: TextStyle(fontSize: 30)
-                ),
+                Text('年齢を選んでください', style: TextStyle(fontSize: 30)),
                 OutlinedButton(
-                  child: const Text('75歳以上の方',style: TextStyle(fontSize: 30)),
+                  child: const Text('75歳以上の方', style: TextStyle(fontSize: 30)),
                   onPressed: () {
-                      over75();
+                    over75();
                   },
                 ),
                 OutlinedButton(
-                  child: const Text('70歳以上の方',style: TextStyle(fontSize: 30)),
+                  child: const Text('70歳以上の方', style: TextStyle(fontSize: 30)),
                   onPressed: () {
                     over70();
                     print(_showmedical);
                   },
                 ),
                 OutlinedButton(
-                  child: const Text('上記以外の方',style: TextStyle(fontSize: 30)),
+                  child: const Text('上記以外の方', style: TextStyle(fontSize: 30)),
                   onPressed: () {
                     setState() {
                       under70();
@@ -83,15 +78,15 @@ class MedicalPage extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                    child: Text("自己負担額は"+'$p' + "割負担で",style: TextStyle(fontSize: 30)),
+                    child: Text("自己負担額は" + '$p' + "割負担で",
+                        style: TextStyle(fontSize: 30)),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    child: Text("￥"+'$_showmedical' + "です",
-                      style: TextStyle(
-                          fontSize: 60),
-
+                    child: Text(
+                      "￥" + '$_showmedical' + "です",
+                      style: TextStyle(fontSize: 60),
                     ),
                   ),
                 ),

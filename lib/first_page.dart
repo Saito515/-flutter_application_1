@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'RENSHU.dart';
 import 'RENSHU02.dart';
 
+String name="ごい";
+
 class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class FirstPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => SecondPage("ゴイスー"),
+                builder: (context) => SecondPage(name),
               ),
             );
           },

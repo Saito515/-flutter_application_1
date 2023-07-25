@@ -2,17 +2,11 @@ import 'package:flutter_application_1/nextpage.dart';
 import 'package:flutter_application_1/sql.dart';
 import 'package:flutter_application_1/medical.dart';
 
-import 'package:mysql_client/mysql_client.dart';
-import 'package:mysql1/mysql1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_dotenv/src/dotenv.dart';
 import 'dart:async';
-import 'package:flutter_application_1/nextpage.dart';
 import 'dart:math' as Math;
-import 'package:provider/provider.dart';
-import 'package:buffer/io_buffer.dart';
-import 'dart:io';
 import 'dart:ui';
 
 Future main() async {
@@ -60,7 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
 //履歴用
   String _rireki = " ";
-  String _shiki = " ";
   String _ans = " ";
   List<String> rirekilist = []; //履歴表示用の配列
 
